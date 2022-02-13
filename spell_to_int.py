@@ -4,14 +4,27 @@ positional= ['কোটি','লক্ষ','হাজার','শত','লাখ
 positional_dict={'শত':2,'হাজার':3,'লক্ষ':5,'কোটি':7, 'লাখ':5}
 hundreds=['একশ','দুইশ','তিনশ','চারশ','পাঁচশ','ছয়শ','সাতশ','আটশ','নয়শ','দশশ','এগারশো','বারোশো','তেরোশো','চদ্দশো','পনেরোশো','ষোলশো','সতেরোশো','আঠারশো','উনিশশো']
 bn_num_dict={}
+all_kWords=[]
+all_kWords.extend(positional)
+all_kWords.extend(hundreds)
+all_kWords.extend(bn_num)
+
 for i in range(len(bn_num)):
     bn_num_dict[bn_num[i]]=i
-    
+  
 hundreds_dict={}
 for i in range(len(hundreds)):
     hundreds_dict[hundreds[i]]=(i+1)*100
 
-input_spelling = (input('enter the number: ')).split()
+input_string = (input('enter the number: ')).split()
+input_spelling = []
+for i in input_string:
+    if i not in all_kWords:
+        continue
+    input_spelling.append(i)
+
+
+print(input_spelling)
 num=0
 for i in range(len(input_spelling)):
     if len(input_spelling)==1:
