@@ -25,11 +25,11 @@ def spell_to_int(spell):
         if i not in all_kWords:
             continue
         input_spelling.append(i)
-
     num=0
     if len(input_spelling)==0:
         return spell
 
+    num_sub_string = ' '.join(str(e) for e in input_spelling)
     for i in range(len(input_spelling)):
         if len(input_spelling)==1:
             if input_spelling[i] in bn_num:
@@ -50,8 +50,9 @@ def spell_to_int(spell):
                 num+=bn_num_dict[input_spelling[i-1]]
                 num=num*10**positional_dict[input_spelling[i]]
             # else:
-            #     num = num*10**positional_dict[input_spelling[i]]
-    return num
+            #     num = num*10**positional_dict[input_spelling[i]]\
+    spell = spell.replace(num_sub_string,str(num))
+    return spell
 
 input_sen= (input('enter the number: '))
 num = spell_to_int(input_sen)  
