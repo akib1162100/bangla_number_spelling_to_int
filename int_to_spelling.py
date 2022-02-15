@@ -39,7 +39,8 @@ def int_to_spell(number):
         part_spelling = int_spell_by_part(number%(10**7))
         if not koti_flag:
             spelling = part_spelling + spelling
-        spelling = part_spelling + " কোটি " + spelling
+        if koti_flag:
+            spelling = part_spelling + " কোটি " + spelling
         number = number//(10**7)
         koti_flag = True
     return spelling
